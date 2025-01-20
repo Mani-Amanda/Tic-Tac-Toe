@@ -64,6 +64,22 @@ int main(){
                 break; // Valid input, exit the loop.
             }
         }
+        board[row][col] = player;
+        if (checkWin(board, player)) {
+                drawBoard(board);
+                cout << "Player " << player << " wins!\n";
+                break; // Exit the loop after a win.
+            }
+        player = (player == 'X') ? 'O' : 'X'; 
+    }
+
+    // End of the game
+    drawBoard(board);
+
+    // Check for a draw
+    if (turn == 9 && !checkWin(board, 'X')
+        && !checkWin(board, 'O')) {
+        cout << "It's a draw!\n";
     }
     return 0;
 }
